@@ -55,7 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin.cs" />
+    <Compile Include="ListUsers.xaml.cs">
+      <DependentUpon>ListUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
+    <Compile Include="Presenter.cs" />
     <Compile Include="User.cs" />
+    <Page Include="ListUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

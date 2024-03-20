@@ -20,14 +20,42 @@ namespace WpfApp25
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Model model;
+        private Presenter presenter;
+        //  List<User> users = new List<User>();
         public MainWindow()
         {
             InitializeComponent();
+
+            model = new Model();
+            presenter = new Presenter(model);
+
+            //User user = new User("loli", "pass");
+            //users.Add(user);
+
+            ///users.Add(new User() { login = TbLogin.Text, password = TbPassword.Text });
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            this.model = this.presenter.Login(TbLogin.Text, TbPassword.Text); // send data to 
+                                                                              // presenter and
+                                                                              // get new model
+            Update(); // update UI
+            ListUsers list = new ListUsers();
+            list.Show();
+            //foreach(User user in users)
+            //{
+            //    if(user.login == TbLogin.Text && user.password == TbPassword.Text)
+            //    {
+            //        TbWelcome.Text = "hiiii";
+            //    }
+            //}
+        }
 
+        private void Update()
+        {
+            TbWelcome.Text = this.model.Message; // message from model
         }
     }
 }
